@@ -1,12 +1,13 @@
-package com.ranxu.cpython;
+package com.ranxu.cython;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CpythonApplication {
+public class CythonApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(CpythonApplication.class, args);
+        SpringApplication.run(CythonApplication.class, args);
     }
 
 }

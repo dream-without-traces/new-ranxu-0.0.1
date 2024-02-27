@@ -1,12 +1,12 @@
-package com.ranxu.cpython.service.impl;
+package com.ranxu.cython.service.impl;
 
 import org.bytedeco.cpython.PyObject;
 import org.bytedeco.cpython.global.python;
 
 /**
  * @Author ranxu
- * @Description java执行python代码的service
- * @Date 2024/2/27 15:11
+ * @Description
+ * @Date 2024/2/27 16:05
  */
 public class PythonExecutor {
     public static void main(String[] args) {

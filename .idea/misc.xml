@@ -9,6 +9,7 @@
       <list>
         <option value="$PROJECT_DIR$/exePython/pom.xml" />
         <option value="$PROJECT_DIR$/cpython/pom.xml" />
+        <option value="$PROJECT_DIR$/cython/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
