@@ -11,7 +11,13 @@ import java.io.InputStreamReader;
  */
 public class PythonExecutor {
     public static void main(String[] args) {
-        String pythonCode = "import numpy as np\n" +
+        String pythonCode = "import json\n" +
+                "loopIndex=0;\n" +
+                "workbenchDataJsonStr=\"{}\";\n" +
+                "\n" +
+                "wj =json.loads(workbenchDataJsonStr);\n" +
+                "cmpResult=None;\n" +
+                "import numpy as np\n" +
                 "\n" +
                 "# 创建一个numpy数组\n" +
                 "arr = np.array([1, 2, 3, 4, 5])\n" +
@@ -44,7 +50,9 @@ public class PythonExecutor {
                 "\n" +
                 "# 计算二维数组每行的和\n" +
                 "row_sum = np.sum(matrix, axis=1)\n" +
-                "print(\"Sum of each row in the matrix:\", row_sum)";
+                "print(\"Sum of each row in the matrix:\", row_sum)\n" +
+                "print(\"\\n\");\n" +
+                "print(json.dumps(cmpResult));";
         String[] command;
 
         // 根据操作系统构建命令
@@ -56,21 +64,22 @@ public class PythonExecutor {
             // Unix/Linux/Mac系统
             command = new String[]{"bash", "-c", "echo '" + pythonCode + "' | python3"};
         }
+        // System.out.println("command = " + Arrays.toString(command));
 
         try {
             ProcessBuilder pb = new ProcessBuilder(command);
             Process process = pb.start();
-
+            StringBuffer stringBuffer = new StringBuffer();
             // 读取并打印Python脚本的输出
             BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             while ((line = in.readLine()) != null) {
-                System.out.println(line);
+                stringBuffer.append(line);
             }
 
             // 等待进程结束并获取退出值
             int exitCode = process.waitFor();
-            System.out.println("Process exited with code " + exitCode);
+            System.out.println("Process exited with code " + exitCode + " " + stringBuffer.toString());
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
